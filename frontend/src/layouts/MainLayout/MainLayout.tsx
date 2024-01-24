@@ -2,13 +2,17 @@ import React, { ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import { observer } from 'mobx-react-lite';
 import styled from 'styled-components';
-import { Link, NavLink, Outlet } from 'react-router-dom';
+import {Link, NavLink, Outlet, useNavigate} from 'react-router-dom';
 import { setLanguage } from '../../localization';
 import appStore from '../../stores/AppStore';
+import userStore from "../../stores/UserStore";
 
 function MainLayout(): ReactElement {
   const { t } = useTranslation();
-
+  const navigate = useNavigate();
+  const routeChange = () =>{
+    navigate('/');
+  }
   return (
     <Wrapper isDark={appStore.isDark}>
       <Header isDark={appStore.isDark}>
@@ -41,6 +45,14 @@ function MainLayout(): ReactElement {
               appStore.isDark
                 ? appStore.setTheme(false)
                 : appStore.setTheme(true)
+            }
+          />
+          <LogOut
+            onClick={() => {
+              localStorage.clear()
+              userStore.setAccessToken('')
+              routeChange()
+            }
             }
           />
         </Navigate>
@@ -163,6 +175,18 @@ const Footer = styled.div<{ isDark: boolean }>`
     font-weight: 700;
     margin-bottom: 10px;
     color: white;
+  }
+`;
+
+const LogOut = styled.div`
+  display: flex;
+  margin-left: 20px;
+  flex-direction: row;
+  width: 40px;
+  height: 40px;
+  background: url(${'./logout.svg'}) 50% / cover;
+  :hover {
+    cursor: pointer;
   }
 `;
 

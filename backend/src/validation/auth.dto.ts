@@ -14,7 +14,7 @@ export class SignUp {
   @IsEmail()
   @IsNotEmpty()
   @MinLength(3)
-  @MaxLength(20)
+  @MaxLength(40)
   readonly email: string;
 
   @ApiProperty()
@@ -58,7 +58,7 @@ export class SignIn {
   @IsEmail()
   @IsNotEmpty()
   @MinLength(3)
-  @MaxLength(20)
+  @MaxLength(40)
   readonly email: string;
 
   @ApiProperty()
