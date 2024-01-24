@@ -72,11 +72,11 @@ docker run --name TestFullStack -p 5432:5432 -e POSTGRES_PASSWORD=postgres -d po
 yarn install
 yarn start
 ```
-Backend запуститься на http://localhost:3000, swagger на http://localhost:3000/docs
+Backend запустится на http://localhost:3000, swagger на http://localhost:3000/docs
 
 Перейти в папку ./frontend и выполнить:
 ```bash
 yarn install
 yarn dev
 ```
-Фронт запуститься на http://localhost:8000
+Фронт запустится на http://localhost:8000
