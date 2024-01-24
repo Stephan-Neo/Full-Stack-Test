@@ -21,12 +21,13 @@ export default function Login() {
   const { register, handleSubmit, reset, formState: { errors } } = useForm<FormData>({
     resolver: yupResolver(schema)
   });
-  const onSubmit = (data: FormData) => {
-    loginUser(data.email, data.password).then((res) => {
+  const onSubmit = async (data: FormData) => {
+    await loginUser(data.email, data.password).then((res) => {
       reset();
       userStore.setAccessToken(res.accessToken)
       userStore.setUserId(res.userId)
       localStorage.setItem('accessToken', res.accessToken);
+      localStorage.setItem('userId', res.userId);
       navigate('/')
     }).catch((res: ErrorRes) => {
       reset();

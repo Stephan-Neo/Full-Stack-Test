@@ -2,7 +2,7 @@ import { action, makeObservable, observable } from 'mobx';
 
 class AppStore {
   @observable
-  isDark: boolean = true;
+  isDark: boolean = false;
 
   @observable
   isLoaded: boolean = false;

@@ -21,8 +21,8 @@ export default function SignUp() {
   const { register, handleSubmit, reset, formState: { errors } } = useForm<FormData>({
     resolver: yupResolver(schema)
   });
-  const onSubmit = (data: FormData) => {
-    signUpUser(data.email, data.login, data.password).then((res) => {
+  const onSubmit = async (data: FormData) => {
+    await signUpUser(data.email, data.login, data.password).then((res) => {
       reset();
       message.success('Вы успешно зарегистрировались!').then(() => {
         navigate('/login')

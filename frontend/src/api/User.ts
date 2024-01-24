@@ -20,3 +20,14 @@ export const signUpUser = async (email: string, login: string, password: string)
   });
   return res.data;
 };
+
+export const getUser = async (userId: string): Promise<User> => {
+  const headers = {
+    'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+    'Content-Type': 'application/json',
+  };
+  const res = await axios.get<User>(`api/users/${userId}`, {
+    headers
+  });
+  return res.data;
+};

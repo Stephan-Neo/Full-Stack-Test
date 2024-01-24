@@ -1,14 +1,11 @@
 import styled from 'styled-components';
-import {Outlet, useNavigate} from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
-import React, {useEffect} from "react";
+import React from "react";
+import { observer } from "mobx-react-lite";
 
 
-export default function LoginLayout() {
-  const navigate = useNavigate();
-  useEffect(() => {
-    navigate('/login')
-  }, [])
+function LoginLayout() {
   return (
     <Wrapper>
       <WrapperLogin>
@@ -39,3 +36,5 @@ const WrapperLogin = styled.div`
     width: 100%;
   }
 `;
+
+export default observer(LoginLayout);

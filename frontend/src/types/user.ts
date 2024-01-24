@@ -1,7 +1,7 @@
 export interface User {
   id: string,
   email: string,
-  "login": string
+  login: string
 }
 
 export interface LoginUser {
